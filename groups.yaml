@@ -1,0 +1,83 @@
+front_lights:
+  name: front lights 
+  entities:
+    - switch.frontlight1
+    - switch.frontlight2
+    - switch.frontlight3
+ 
+
+tal_room_ac:
+  name: bed_room_ac
+  entities:
+    - input_boolean.tr_ac_status
+    - sensor.tr_ac_temp_sensor
+    - cover.tr_ac_temp_cover
+    - input_select.tr_ac_mode
+    - input_select.tr_ac_fan
+bed_room_ac:
+  name: bed_room_ac
+  entities:
+    - input_boolean.tr_ac_status
+    - sensor.br_ac_temp_sensor
+    - cover.br_ac_temp_cover
+    - input_select.br_ac_mode
+    - input_select.br_ac_fan
+
+living_room_ac:
+  name: living_room_ac
+  entities:
+    - input_boolean.br_ac_status
+    - sensor.lr_ac_temp_sensor
+    - cover.lr_ac_temp_cover
+    - input_select.lr_ac_mode
+    - input_select.lr_ac_fan
+waze:
+  name: Waze
+  view: false
+  entities:
+    - sensor.to_work
+    - sensor.to_wotk_distance
+    - sensor.to_wotk_route
+    - sensor.hline_1
+    - sensor.back_home
+    - sensor.back_home_distance
+    - sensor.back_home_route
+time_values:
+  name: Date & Time Values
+  entities:
+    - sensor.date
+    - sensor.date_time
+    - sensor.internet_time
+    - sensor.time
+    - sensor.time_date
+    - sensor.time_utc
+warehouse:
+  name: warehouse and Pergula
+  entities:
+    - binary_sensor.warehouse_door_motion
+    - switch.warehouse_light
+    - switch.warehouse_ext_light
+    - switch.pergula_light1
+    - switch.pergula_light2
+    - switch.pergula_fan
+
+bedroom:
+  name: bedroom switches
+  entities:
+    - switch.br_ac_electra
+    - switch.br_mi_box_power
+    - switch.br_ac_electra
+    - switch.br_tv_lg_power
+    - switch.sockettemp_switch
+livingroom:
+  name: livingroom switches
+  entities:
+    - switch.lr_ac_tadiran
+    - switch.lr_tv_minix_power
+    - switch.lr_tv_samsung_power
+    - switch.keshet_switch
+talroom:
+  entities:
+    - switch.tr_ac_electra_tal
+    - switch.tr_mi_box_power
+    - switch.tr_tv_samsung_power

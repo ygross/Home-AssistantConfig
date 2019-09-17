@@ -1,0 +1,191 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: ygrossHome
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 170
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Jerusalem
+ #customize 
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
+# Show links to resources in log and frontend
+#introduction:
+system_health:
+
+# Enables the frontend
+frontend:
+  themes: !include_dir_merge_named themes
+# Enables configuration UI
+config:
+
+#turn on history 
+history: !include history.yaml
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  base_url: !secret base_url  
+  server_port: !secret server_port
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem 
+  use_x_forwarded_for: true
+  trusted_proxies:
+  - !secret trusted_proxy1
+  - !secret trusted_proxy2
+  - !secret trusted_proxy3 
+  - !secret trusted_proxy4
+  - !secret trusted_proxy5
+  - !secret trusted_proxy6
+
+# Sensors
+sensor: !include sensors.yaml
+#binary_sensor
+binary_sensor: !include RFsensors.yaml 
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+mqtt: 
+  broker: !secret mqtt_host
+  username: !secret mqtt_username  
+  password: !secret mqtt_password
+#  discovery: true
+  #discovery_prefix: homeassistant
+ 
+switch: !include switches.yaml
+
+zone 1:
+  name: Work
+  latitude: !secret work_latitude
+  longitude: !secret work_longitude
+  radius: 100
+  icon: mdi:worker
+zone 2:
+  name: School
+  latitude: !secret school_latitude
+  longitude: !secret school_longitude
+  radius: 100
+  icon: mdi:chair-school
+zone 3:
+  name: Sdeteman
+  latitude: !secret sdeteman_latitude
+  longitude: !secret sdeteman_longitude
+  radius: 200
+  icon: mdi:plane-shield
+zone 4:
+  name: Study
+  latitude: !secret study_latitude
+  longitude: !secret study_longitude
+  radius: 100
+  icon: mdi:chair-school
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    
+telegram_bot:
+  - platform: polling
+    api_key: !secret  telegram_apikey
+    allowed_chat_ids:
+      - 960861180
+
+#tracker
+device_tracker:
+  - platform: life360
+    username: !secret life360_user
+    password: !secret life360_pw
+#378362395
+notify: !include notify.yaml
+panel_iframe:
+  tasmoadmin:
+    title: TasmoAdmin
+    icon: mdi:lightbulb-on
+    url: !secret tasmoadmin_url
+camera: !include cameras.yaml
+input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
+input_text: !include input_text.yaml
+cover: !include covers.yaml
+
+life360:
+  # MPH, assuming imperial units.
+  # If using metric (KPH), the equivalent would be 29.
+  driving_speed: 18
+  interval_seconds: 10
+  max_gps_accuracy: 200
+  max_update_wait:
+    minutes: 45
+  show_as_state:
+    - driving
+    - moving
+logger:
+  default: info
+  logs:
+    homeassistant.components.yamaha: critical
+    custom_components.my_integration: critical
+    homeassistant.components.mqtt.binary_sensor: critical
+    
+smartir:
+  update_branch: rc
+media_player:
+  - platform: xiaomi_tv
+    host: 10.0.0.26
+    name: br_xiaomi_tv
+    
+  - platform: xiaomi_tv
+    host: 10.0.0.52
+    name: tr_xiaomi_tv    
+    
+  - platform: smartir
+    name: Living room TV
+    unique_id: lr_tv
+    device_code: 1060
+    controller_data: !secret broadlink_livingroom
+   
+  - platform: smartir
+    name: Tal room TV
+    unique_id: tr_tv
+    device_code: 1060
+    controller_data: !secret broadlink_talroom
+    
+  - platform: smartir
+    name: Bed room TV
+    unique_id: br_tv
+    device_code: 1040
+    controller_data: !secret broadlink_bedroom
+     
+climate:
+  - platform: smartir
+    name: living room Ac
+    unique_id: lr_ac
+    device_code: 1340
+    controller_data: !secret broadlink_livingroom
+    temperature_sensor: sensor.livingroom_temperature
+    humidity_sensor: sensor.livingroom_humidity
+    power_sensor: binary_sensor.ac_living_on
+    
+  - platform: smartir
+    name: Bed Room Ac
+    unique_id: br_ac
+    device_code: 1234
+    controller_data: !secret broadlink_bedroom
+    temperature_sensor: sensor.bedroom_temperature
+    humidity_sensor: sensor.bedroom_humidity
+    power_sensor: binary_sensor.ac_bedroom_on
+    
+  - platform: smartir
+    name: Tal Room Ac
+    unique_id: tr_ac
+    device_code: 1940
+    controller_data: !secret broadlink_talroom
+    temperature_sensor: sensor.talroom_temperature
+    humidity_sensor: sensor.talroom_humidity
+    power_sensor: binary_sensor.ac_talroom_on  
+

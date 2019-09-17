@@ -1,0 +1,261 @@
+  - platform: template
+    sensors:
+      battery_noa: 
+        friendly_name: Noa Phone Battery
+        unit_of_measurement: '%'
+        value_template: >-
+            {%- if state_attr('device_tracker.life360_noa', 'battery') %}
+                {{ state_attr('device_tracker.life360_noa', 'battery')|round }}
+            {% else %}
+                {{ states('sensor.battery_noa') }}
+            {%- endif %}
+        device_class: battery
+  - platform: template
+    sensors:
+      battery_tal: 
+        friendly_name: Tal Phone Battery
+        unit_of_measurement: '%'
+        value_template: >-
+            {%- if state_attr('device_tracker.life360_tal', 'battery') %}
+                {{ state_attr('device_tracker.life360_tal', 'battery')|round }}
+            {% else %}
+                {{ states('sensor.battery_tal') }}
+            {%- endif %}
+        device_class: battery
+  - platform: template
+    sensors:
+      battery_yossi: 
+        friendly_name: Noa Phone Battery
+        unit_of_measurement: '%'
+        value_template: >-
+            {%- if state_attr('device_tracker.life360_yossi', 'battery') %}
+                {{ state_attr('device_tracker.life360_yossi', 'battery')|round }}
+            {% else %}
+                {{ states('sensor.battery_yossi') }}
+            {%- endif %}
+        device_class: battery
+  - platform: template
+    sensors:
+      battery_ofir: 
+        friendly_name: Ofir Phone Battery
+        unit_of_measurement: '%'
+        value_template: >-
+            {%- if state_attr('device_tracker.life360_ofir', 'battery') %}
+                {{ state_attr('device_tracker.life360_ofir', 'battery')|round }}
+            {% else %}
+                {{ states('sensor.battery_ofir') }}
+            {%- endif %}
+        device_class: battery
+  - platform: mqtt
+    name: "ext Temperature"
+    state_topic: "extTemp/tele/SENSOR"
+    value_template: "{{ value_json['SI7021'].Temperature }}"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "ext Humidity"
+    state_topic: "extTemp/tele/SENSOR"
+    value_template: "{{ value_json['SI7021'].Humidity }}"
+    unit_of_measurement: '%'
+    device_class: humidity
+    
+  - platform: mqtt
+    name: "Boiler WaterTemp"
+    state_topic: "boilerTemp/tele/SENSOR"
+    value_template: "{{ value_json['DS18B20'].Temperature }}"
+    unit_of_measurement: '°C'
+    device_class: humidity
+  
+  - platform: mqtt
+    name: "washMachines POW Current"
+    state_topic: "washMachines/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Current }}"
+    unit_of_measurement: 'amps'
+  - platform: mqtt
+    name: "washMachines POW Power"
+    state_topic: "washMachines/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Power }}"
+    unit_of_measurement: 'watts'
+  - platform: mqtt
+    name: "washMachines POW Today"
+    state_topic: "washMachines/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Today }}"
+    unit_of_measurement: 'kwh'
+  - platform: mqtt
+    name: "washMachines POW Yesterday"
+    state_topic: "washMachines/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Yesterday }}"
+    unit_of_measurement: 'kwh'
+
+
+  - platform: mqtt
+    name: "fridgeOvenMic POW Current"
+    state_topic: "fridgeOvenMic/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Current }}"
+    unit_of_measurement: 'amps'
+  - platform: mqtt
+    name: "fridgeOvenMic POW Power"
+    state_topic: "fridgeOvenMic/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Power }}"
+    unit_of_measurement: 'watts'
+  - platform: mqtt
+    name: "fridgeOvenMic POW Today"
+    state_topic: "fridgeOvenMic/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Today }}"
+    unit_of_measurement: 'kwh'
+  - platform: mqtt
+    name: "fridgeOvenMic POW Yesterday"
+    state_topic: "fridgeOvenMic/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Yesterday }}"
+    unit_of_measurement: 'kwh'
+
+  #- platform: waze_travel_time
+#    origin: zone.home
+ #   destination: zone.work
+  #  region: 'IL'
+   # name: To Work
+ 
+  #- platform: waze_travel_time
+   # origin: zone.work
+    #destination: zone.home
+#    region: 'IL'
+ #   name: Back Home
+  
+  #- platform: template
+  #  sensors:
+ #     to_wotk_distance:
+  #      unit_of_measurement: 'KM'
+  #      value_template: '{{ states.sensor.to_work.attributes.distance }}'
+   #     friendly_name: 'Distance'
+#icon_template: mdi:map-marker-distance
+#  - platform: template
+#   sensors:
+ #     to_wotk_route:
+   #     value_template: '{{ states.sensor.to_work.attributes.route }}'
+   #     friendly_name: 'Route'
+  #      icon_template: mdi:routes
+#- platform: template
+#sensors:
+ #     back_home_distance:
+ #       unit_of_measurement: 'KM'
+ #       value_template: '{{ states.sensor.back_home.attributes.distance }}'
+  #      friendly_name: 'Distance'
+  #      icon_template: mdi:map-marker-distance
+ #
+# - platform: template
+ #   sensors:
+  #    back_home_route:
+   #     value_template: '{{ states.sensor.back_home.attributes.route }}'
+   #     friendly_name: 'Route'
+  #      icon_template: mdi:routes
+        
+  - platform: mqtt
+    name: "Main Water Flow"
+    state_topic: "mainWaterFlow/tele/SENSOR"
+    value_template: "{{ ( value_json['COUNTER'].C1 | multiply(0.00222) | float ) | round(2) }}"
+    unit_of_measurement: "l/min"
+    
+  - platform: mqtt
+    name: "Water Flow"
+    state_topic: "waterFlow/tele/SENSOR"
+    value_template: "{{ ( value_json['COUNTER'].C1 | multiply(0.00222) | float ) | round(2) }}"
+    unit_of_measurement: "l/min"    
+  - platform: mqtt
+    name: "TalRoom Temperature"
+    state_topic: "talTemp/tele/SENSOR"
+    value_template: "{{ value_json['AM2301'].Temperature }}"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "TalRoom Humidity"
+    state_topic: "talTemp/tele/SENSOR"
+    value_template: "{{ value_json['AM2301'].Humidity }}"
+    unit_of_measurement: '%'
+    device_class: humidity
+  - platform: mqtt
+    name: "LivingRoom Temperature"
+    state_topic: "keshet/tele/SENSOR"
+    value_template: "{{ value_json['AM2301'].Temperature }}"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "LivingRoom Humidity"
+    state_topic: "keshet/tele/SENSOR"
+    value_template: "{{ value_json['AM2301'].Humidity }}"
+    unit_of_measurement: '%'
+    device_class: humidity    
+  - platform: jewish_calendar
+    language: english
+    diaspora: true
+    sensors:
+      - date
+      - weekly_portion
+      - holiday_name
+      - holyness
+      - first_light
+      - gra_end_shma
+      - mga_end_shma
+      - plag_mincha
+      - first_stars 
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+  - platform: mqtt
+    name: "Boiler POW Current"
+    state_topic: "boiler/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Current }}"
+    unit_of_measurement: 'amps'
+  - platform: mqtt
+    name: "Boiler POW Power"
+    state_topic: "boiler/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Power }}"
+    unit_of_measurement: 'watts'
+  - platform: mqtt
+    name: "Boiler POW Today"
+    state_topic: "boiler/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Today }}"
+    unit_of_measurement: 'kwh'
+  - platform: mqtt
+    name: "Boiler POW Yesterday"
+    state_topic: "boiler/tele/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Yesterday }}"
+    unit_of_measurement: 'kwh'
+
+  - platform: mqtt
+    name: "Bedroom Temperature"
+    state_topic: "socketTemp/tele/SENSOR"
+    value_template: "{{ value_json['SI7021'].Temperature }}"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Bedroom Humidity"
+    state_topic: "socketTemp/tele/SENSOR"
+    value_template: "{{ value_json['SI7021'].Humidity }}"
+    unit_of_measurement: '%'
+    device_class: humidity
+  - platform: mqtt
+    name: "Boiler WaterTemp"
+    state_topic: "boilerTemp/tele/SENSOR"
+    value_template: "{{ value_json['DS18B20'].Temperature }}"
+    unit_of_measurement: '°C'
+    device_class: humidity
+  
+  - platform: systemmonitor
+    resources:
+    - type: disk_use_percent
+      arg: /
+    - type: memory_free
+    - type: memory_use_percent
+    - type: processor_use
+    - type: network_in
+      arg: enp0s3
+    - type: network_out
+      arg: enp0s3
+    - type: last_boot
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m
+
+      

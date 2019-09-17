@@ -1,0 +1,7 @@
+theme_selector:
+    name: Theme Selector 
+    options:
+      - Homekit Blue Light
+      - Homekit Blue Dark
+      - Midnight
+      - Automatic (default)

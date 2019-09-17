@@ -1,0 +1,9 @@
+include:
+    domains:
+      - sensor
+      - switch
+exclude:
+  domains:
+   - media_player
+   - scripts
+     

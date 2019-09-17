@@ -1,0 +1,281 @@
+- id: automation id
+  alias: automation alias (name)
+  trigger:
+  condition:
+  action:
+- id: fb12a37448ee4d7ba33cf3024ec042ac
+  alias: Power state on HA start-up
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      qos: 1
+      topic: sonoffs/cmnd/state
+    service: mqtt.publish
+  - data:
+      message: HA restart
+      title: Gross Home Assistant
+    service: notify.telegram
+- id: Reset Living Room Ac
+  alias: Reset Living Room Ac  motion
+  trigger:
+  - entity_id: switch.lr_ac_tadiran
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      payload: 5C9DACoff
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- id: Reset Pergula  motion
+  alias: Reset Pergula  motion
+  trigger:
+  - entity_id: binary_sensor.livingroom_motion
+    for: 00:00:05
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      payload: 4DC523off
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- alias: turn off Tal AC
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.tal_room_motion
+    to: 'off'
+    for:
+      minutes: 1
+  condition:
+  - condition: state
+    entity_id: binary_sensor.ac_tal_room_on
+    state: 'on'
+  action:
+  - data:
+      payload: B16533off
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+  - entity_id: switch.ac_electra_tal
+    service: homeassistant.turn_off
+  id: b90e4550954f4f5c9d8d073854290964
+- id: boiler morning
+  alias: BOILER Morning
+  trigger:
+  - at: 05:00:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: switch.boiler_switch
+    state: 'off'
+  - below: '44'
+    condition: numeric_state
+    entity_id: sensor.boiler_watertemp
+  action:
+  - data:
+      message: מדליק דוד שמש
+      title: Home Assistant
+    service: notify.telegram
+  - entity_id: switch.boiler_switch
+    service: switch.turn_on
+  - delay: 01:00:00
+  - entity_id: switch.boiler_switch
+    service: switch.turn_off
+  - data:
+      message: דוד שמש כבוי
+      title: Home Assistant
+    service: notify.telegram
+- id: boiler Evening
+  alias: BOILER Evening
+  trigger:
+  - at: '17:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: switch.boiler_switch
+    state: 'off'
+  - below: '44'
+    condition: numeric_state
+    entity_id: sensor.boiler_watertemp
+  action:
+  - data:
+      message: דוד שמש דולק
+      title: Home Assistant
+    service: notify.telegram
+  - entity_id: switch.boiler_switch
+    service: switch.turn_on
+  - delay: 01:00:00
+  - entity_id: switch.boiler_switch
+    service: switch.turn_off
+  - data:
+      message: דוד שמש כבוי
+      title: Home Assistant
+    service: notify.telegram
+- id: Turn On Front Lights
+  alias: Front Lights
+  trigger:
+  - event: sunset
+    offset: 00:45:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: group.front_lights
+    state: 'off'
+  action:
+  - entity_id: group.front_lights
+    service: switch.turn_on
+  - delay: 02:00:00
+  - entity_id: group.front_lights
+    service: switch.turn_off
+  - data:
+      message: אור חצר קדמי דלוק
+      title: Gross Home
+    service: notify.telegram
+- id: Turn On bed room Lights
+  alias: Bedroom Lights morning
+  trigger:
+  - event: sunrise
+    offset: -00:45:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: switch.sockettemp_switch
+    state: 'off'
+  action:
+  - entity_id: switch.sockettemp_switch
+    service: switch.turn_on
+  - delay: 01:00:00
+  - entity_id: switch.sockettemp_switch
+    service: switch.turn_off
+  - data:
+      message: morning Lights
+      title: Gross Home Assistant
+    service: notify.telegram
+- id: Reset Front Motion
+  alias: Reset Front Motion
+  trigger:
+  - entity_id: binary_sensor.front_door_motion
+    for: 00:00:05
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      payload: D31421off
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- id: Reset Kitchen Motion
+  alias: Reset Kitchen Motion
+  trigger:
+  - entity_id: binary_sensor.kitchen_motion
+    for: 00:00:05
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      payload: EB66FEoff
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- id: Reset living Room Motion
+  alias: Reset Livingroom Motion
+  trigger:
+  - entity_id: binary_sensor.salon_motion
+    for: 00:00:05
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      payload: 7A4FE0off
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- id: Reset backdoor lock
+  alias: Reset Back Door Lock
+  trigger:
+  - entity_id: binary_sensor.backdoor_open
+    for: 00:00:05
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      payload: 48F8B9off
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- id: Reset talRoom  motion
+  alias: Reset Tal room motion
+  trigger:
+  - entity_id: binary_sensor.tal_room_motion
+    for: 00:00:05
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      payload: E9A7DEoff
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- id: Turn Off Tv's
+  alias: Turn Off Tv's
+  trigger:
+  - at: 01:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.tv_lg_power
+    service: switch.turn_off
+- id: smoke_detector_alarm reset
+  alias: Hall Smoke Detector Alarm
+  trigger:
+  - entity_id: binary_sensor.hall_smoke_detector
+    for: 00:00:05
+    from: 'Off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Smoke Detector Alarm
+      title: Gross Home Assistant
+    service: notify.telegram
+- id: turn  keshet on movement
+  alias: 'turn  keshet on movement '
+  trigger:
+  - entity_id: binary_sensor.kitchen_motion
+    for: 00:00:01
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  action:
+  - entity_id: switch.keshet_switch
+    service: switch.turn_on
+  - delay: 00:15:00
+- id: '1568350425097'
+  alias: kitchen smoke detector alarm
+  trigger:
+  - entity_id: binary_sensor.kitchen_smoke_detector_alarm
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: smoke detector kitchen alarm
+      title: Gross Home Assistant
+    service: notify.telegram

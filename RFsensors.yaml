@@ -1,0 +1,126 @@
+
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'pergula Motion'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: '5C9DAC'
+      payload_off: '5C9DACoff'
+      device_class: motion
+      qos: 1
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'Bedroom Motion'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: 'AF90AC'
+      payload_off: 'AF90ACoff'
+      device_class: motion
+      qos: 1
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'Ac Tal Room On'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: 'B16533'
+      payload_off: 'B16533off'
+      device_class: power
+      qos: 1
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'Tal Room Motion'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: 'E9A7DE'
+      payload_off: 'E9A7DEoff'
+      device_class: motion
+      qos: 1
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'Warehouse Door Motion'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: '45CB23'
+      payload_off: '45CB23off'
+      device_class: door
+      qos: 1     
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'Kitchen Smoke Detector Alarm'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: 'D023E8'
+      payload_off: 'D023E8off'
+      device_class: smoke
+      qos: 1     
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'LivingRoom Motion'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: '7A4FE0'
+      payload_off: '7A4FE0off'
+      device_class: motion
+      qos: 1    
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'kitchen Motion'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: 'EB66FE'
+      payload_off: 'EB66FEoff'
+      device_class: motion
+      qos: 1    
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'Front Door Open'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: '9D1489'
+      payload_off: '9D1489off'
+      device_class: door
+      qos: 1  
+      
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'Back Door Open' 
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: '7BEC89'
+      payload_off: '7BEC89off'
+      device_class: door
+      qos: 1 
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'Hall smoke detector'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: '4ECA96'
+      payload_off: '4ECA96off'
+      device_class: smoke
+      qos: 1 
+
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'AC Bedroom ON'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: 'EB66FE2222'
+      payload_off: 'EB66FEoff222222'
+      device_class: power
+      qos: 1 
+      
+    - platform: mqtt
+      state_topic: "RFbridge/tele/RESULT"
+      name: 'AC Living Room  ON'
+      value_template: '{{value_json.RfReceived.Data}}'
+      payload_on: '4DC523'
+      payload_off: '4DC523off'
+      device_class: power
+      qos: 1 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

@@ -1,0 +1,412 @@
+     
+    - platform: mqtt
+      name: "balcony_switch"
+      state_topic: "balconyLight/stat/POWER"
+      command_topic: "balconyLight/cmnd/POWER"
+      availability_topic: "balconyLight/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+     
+    - platform: mqtt
+      name: "extTemp_switch"
+      state_topic: "extTemp/stat/POWER"
+      command_topic: "extTemp/cmnd/POWER"
+      availability_topic: "extTemp/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+
+    - platform: mqtt
+      name: "poolFilter_switch"
+      state_topic: "poolFilter/stat/POWER"
+      command_topic: "poolFilter/cmnd/POWER"
+      availability_topic: "poolFilter/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "fridgeovenmic_switch"
+      state_topic: "fridgeOvenMic/stat/POWER"
+      command_topic: "fridgeOvenMic/cmnd/POWER"
+      availability_topic: "fridgeOvenMic/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "washMachines_switch"
+      state_topic: "washMachines/stat/POWER"
+      command_topic: "washMachines/cmnd/POWER"
+      availability_topic: "washMachines/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "frontLight1"
+      state_topic: "frontLights/stat/POWER1"
+      command_topic: "frontLights/cmnd/POWER1"
+      availability_topic: "frontLights/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "frontLight2"
+      state_topic: "frontLights/stat/POWER2"
+      command_topic: "frontLights/cmnd/POWER2"
+      availability_topic: "frontLights/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "frontLight3"
+      state_topic: "frontLights/stat/POWER3"
+      command_topic: "frontLights/cmnd/POWER3"
+      availability_topic: "frontLights/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "frontWaterFlow"
+      state_topic: "frontLights/stat/POWER4"
+      command_topic: "frontLights/cmnd/POWER4"
+      availability_topic: "frontLights/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"    
+      retain: false
+      
+    - platform: mqtt
+      name: "waterFlowMain"
+      state_topic: "mainWaterFlow/stat/POWER"
+      command_topic: "mainWaterFlow/cmnd/POWER"
+      availability_topic: "mainWaterFlow/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "SocketTemp_switch"
+      state_topic: "socketTemp/stat/POWER"
+      command_topic: "socketTemp/cmnd/POWER"
+      availability_topic: "socketTemp/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "Keshet_switch"
+      state_topic: "keshet/stat/POWER"
+      command_topic: "keshet/cmnd/POWER"
+      availability_topic: "whGarden/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"  
+      retain: false
+      
+    - platform: mqtt
+      name: "warehouse Light1"
+      state_topic: "whGarden/stat/POWER1"
+      command_topic: "whGarden/cmnd/POWER1"
+      availability_topic: "whGarden/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"  
+      retain: false
+      
+    - platform: mqtt
+      name: "warehouse Light2"
+      state_topic: "whGarden/stat/POWER2"
+      command_topic: "whGarden/cmnd/POWER2"
+      availability_topic: "whGarden/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"  
+      retain: false
+      
+    - platform: mqtt
+      name: "warehouse Light3"
+      state_topic: "whGarden/stat/POWER3"
+      command_topic: "whGarden/cmnd/POWER3"
+      availability_topic: "whGarden/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"  
+      retain: false
+      
+    - platform: mqtt
+      name: "warehouse ext Light"
+      state_topic: "whGarden/stat/POWER3"
+      command_topic: "whGarden/cmnd/POWER3"
+      availability_topic: "whGarden/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "Pergula Light1"
+      state_topic: "pergula/stat/POWER1"
+      command_topic: "pergula/cmnd/POWER1"
+      availability_topic: "pergula/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF" 
+      retain: false
+      
+    - platform: mqtt
+      name: "Pergula Light2"
+      state_topic: "pergula/stat/POWER2"
+      command_topic: "pergula/cmnd/POWER2"
+      availability_topic: "pergula/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF" 
+      retain: false
+      
+    - platform: mqtt
+      name: "Pergula Fan"
+      state_topic: "pergula/stat/POWER3"
+      command_topic: "pergula/cmnd/POWER3"
+      availability_topic: "pergula/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF" 
+      retain: false
+      
+    - platform: mqtt
+      name: "Hall_switch"
+      state_topic: "Hall/stat/POWER"
+      command_topic: "Hall/cmnd/POWER"
+      availability_topic: "Hall/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "boilerTemp_switch"
+      state_topic: "boilerTemp/stat/POWER"
+      command_topic: "boilerTemp/cmnd/POWER"
+      availability_topic: "boilerTemp/tele/LWT"
+      qos: 0
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "Boiler_switch"
+      state_topic: "boiler/stat/POWER"
+      command_topic: "boiler/cmnd/POWER"
+      availability_topic: "boiler/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: mqtt
+      name: "BedroomFan_switch"
+      state_topic: "bedroomFan/stat/POWER"
+      command_topic: "bedroomFan/cmnd/POWER"
+      availability_topic: "bedroomFan/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: false
+      
+    - platform: broadlink
+      host: !secret broadlink_talroom
+      mac: !secret broadlink_talroom_mac
+      friendly_name: "TalRoom  Broadlink"
+      timeout: 20
+      type: rm_mini
+      switches:
+        tr_mi_box_power:
+          friendly_name: "TalRoom MiBox Power"
+          command_on: 'JgA0ACMRFhEWLRYtFhEWLRYRFi0WERUuFi0WAAFTIhEWERYtFi0WERYtFhEVLhYRFS4VLhYADQUAAAAA=='
+          command_off: 'JgA0ACMRFhEWLRYtFhEWLRYRFi0WERUuFi0WAAFTIhEWERYtFi0WERYtFhEVLhYRFS4VLhYADQUAAAAA==' 
+        tr_mi_box_up:          
+          friendly_name: "TalRoom MiBox Up"
+          command_on: 'JgA0ACISFSQWERUbFiQWERURFhoWGxUkFi0WAAGMJREWJBYRFRsWIxYRFhEWGhYaFiQWLRYADQUAAAAA=='
+          command_off: 'JgA0ACISFSQWERUbFiQWERURFhoWGxUkFi0WAAGMJREWJBYRFRsWIxYRFhEWGhYaFiQWLRYADQUAAAAA==' 
+        tr_mi_box_down:      
+          friendly_name: "TalRoom MiBox Down"
+          command_on: 'JgA0ACMRFiQVEhUbFiMWERYRFhoWJBUkFhEWAAGgIxEWJBURFhsVJBYRFhEWGhYkFSQWERYADQUAAAAA=='
+          command_off: 'JgA0ACMRFiQVEhUbFiMWERYRFhoWJBUkFhEWAAGgIxEWJBURFhsVJBYRFhEWGhYkFSQWERYADQUAAAAA==' 
+        tr_mi_box_left:      
+          friendly_name: "TalRoom MiBox Left"
+          command_on: 'JgA2ABQmExQTHRMmFBMUExMnEzATHRMdFAABkCETEycTExQdEyYUExMUEyYULxQdEx0TAAioDQANBQAA=='
+          command_off: 'JgA2ABQmExQTHRMmFBMUExMnEzATHRMdFAABkCETEycTExQdEyYUExMUEyYULxQdEx0TAAioDQANBQAA==' 
+        tr_mi_box_right:
+          friendly_name: "TalRoom MiBox Right"
+          command_on: 'JgA0ACQRFSQWERYaFiQWERYQFi4VERYRFiQVAAGhIxEVJBYRFhoWJBYRFREWLRYRFhEWJBUADQUAAAAA=='
+          command_off: 'JgA0ACQRFSQWERYaFiQWERYQFi4VERYRFiQVAAGhIxEVJBYRFhoWJBYRFREWLRYRFhEWJBUADQUAAAAA=='
+        tr_mi_box_ok:
+          friendly_name: "TalRoom MiBox Ok"
+          command_on: 'JgA0ACMRFiQVERYbFSQWERYRFS4WGhYRFi0WAAGOIxEVJBYRFhoWJBYRFhAWLhUbFREWLhUADQUAAAAA=='
+          command_off: 'JgA0ACMRFiQVERYbFSQWERYRFS4WGhYRFi0WAAGOIxEVJBYRFhoWJBYRFhAWLhUbFREWLhUADQUAAAAA=='
+        tr_mi_box_back:
+          friendly_name: "TalRoom MiBox Back"
+          command_on: 'JgA0ACMRFSQWERUbFiQWERURFhoWLhUkFhoWAAGPIhEWJBYRFRsWIxYRFhEWGhYtFiQWGhYADQUAAAAA=='
+          command_off: 'JgA0ACMRFSQWERUbFiQWERURFhoWLhUkFhoWAAGPIhEWJBYRFRsWIxYRFhEWGhYtFiQWGhYADQUAAAAA=='
+        tr_mi_box_home:
+          friendly_name: "TalRoom MiBox Home"
+          command_on: 'JgA0ACYSFSQWERUbFiQWERURFiQWERUbFiMWAAGhIhEWJBYRFRsWJBURFhEWJBYQFhsVJBYADQUAAAAA=='
+          command_off: 'JgA0ACYSFSQWERUbFiQWERURFiQWERUbFiMWAAGhIhEWJBYRFRsWJBURFhEWJBYQFhsVJBYADQUAAAAA=='
+        tr_mi_box_vol_up:
+          friendly_name: "TalRoom MiBox Vol+"
+          command_on: 'JgA0ACMRFSUVERYaFiQWERYRGikVJBYRFhEVAAGhIxEVJBYRFhoWJBYRFREWLhUkFhEWERUADQUAAAAA=='
+          command_off: 'JgA0ACMRFSUVERYaFiQWERYRGikVJBYRFhEVAAGhIxEVJBYRFhoWJBYRFREWLhUkFhEWERUADQUAAAAA=='
+        tr_mi_box_vol_down:
+          friendly_name: "TalRoom MiBox Vol-"
+          command_on: 'JgA0ACMRFSUVERYaFiQWERYRFS4VLhYRFRsWAAGOIxEVJBYRFhoWJBYRFREWLRYuFREWGhYADQUAAAAA=='
+          command_off: 'JgA0ACMRFSUVERYaFiQWERYRFS4VLhYRFRsWAAGOIxEVJBYRFhoWJBYRFREWLRYuFREWGhYADQUAAAAA=='
+
+        tr_tv_minix_power:
+          friendly_name: "TalRoom TV Minix Power"
+          command_on: 'JgDwAA8ABzUAASqSFDYVERQRFREUERURFBEVERQRFTYUNhU2FDYVNhQ2FTUVERURFBEVNhQ2FREUERURFDYVNRU2FBEVERQ2FTYUNhUABR4AAStIFAAMaAABKkkUAAxnAAEoShUADGcAAShKFQAMZwABKkkUAAxnAAEqNwULFwAMZwABKkkVAAuVB8sAASpJFAAMZwABKkkVAAxmAAErSBUADGcAASpJFAAMZwABKEsUAAxoAAEqSRQADGcAAStIEwAMaQABKkkUAAxnAAEqSRUADGcAASpJFAAMZwABK0gVAAxnAAEqSRQADGcAASpHFwANBQAAAAAAAAAA===' 
+      
+      
+      
+    - platform: broadlink
+      host: !secret broadlink_bedroom
+      mac: !secret broadlink_bedroom_mac
+      friendly_name: "BedRoom Broadlink"
+      timeout: 20
+      type: rm_mini
+      switches:
+        br_ac_electra_fan:
+          friendly_name: "BedRoom AC Electra Fan"
+          command_on: 'JgDYAAABKpcROhE6ExQSFhMVERYSORM5EzkRORM6EDoRFRMVEzkRFhIVEjkSFhM5ERUSOhE6FDgSFRIVEjkSORUUEhUTFRIWEhUSFRMUERUSFREWEjkTFRIVERYSFRIVExUSFRIVEhUUFBEWEhUSFRIVEhUTFREWExQSFRMVERYTFBIVEhUTFRIVExQTFBIVExURFhMUExQTFREWFBQRFREWEToTFRIWEhUUFBIVExUSFRMVEhUTFRIWEhUTOREVExQTFREWEhYSFBMVEToTOBIVEzkROhMVFAANBQ=='
+          command_off: 'JgDYAAABKpcROhE6ExQSFhMVERYSORM5EzkRORM6EDoRFRMVEzkRFhIVEjkSFhM5ERUSOhE6FDgSFRIVEjkSORUUEhUTFRIWEhUSFRMUERUSFREWEjkTFRIVERYSFRIVExUSFRIVEhUUFBEWEhUSFRIVEhUTFREWExQSFRMVERYTFBIVEhUTFRIVExQTFBIVExURFhMUExQTFREWFBQRFREWEToTFRIWEhUUFBIVExUSFRMVEhUTFRIWEhUTOREVExQTFREWEhYSFBMVEToTOBIVEzkROhMVFAANBQ=='
+        br_ac_electra_temp:
+          friendly_name: "BedRoom AC Electra Temp"
+          command_on: 'JgDYAAABK5YSORA6EhUUFRIVExUTOBE6EjkTOBM5EToSFRQVEjkRFhIVEjkTFRQ4ERUSOhE6EzkTOBI5ExUTORMUERYSFRIVFBQRFhMUEhUTFBM4FBQTOhAWEhUSFREVERYRFRQUExYTFRIVExUSFRMVEhUTFRIWEhUTFRIVFBQSFRMVEhUTFRMVEhUTFRIVExUSFRMVExUSFRIWEhUSFhIVEjoQFhIWERUTFREWEBYRFRIVExUTFRMVEhUTFRIVExUSFRMVEhYTOBE5EzkSFRIVEhUTORE6FQANBQ=='
+          command_off: 'JgDYAAABK5YSORA6EhUUFRIVExUTOBE6EjkTOBM5EToSFRQVEjkRFhIVEjkTFRQ4ERUSOhE6EzkTOBI5ExUTORMUERYSFRIVFBQRFhMUEhUTFBM4FBQTOhAWEhUSFREVERYRFRQUExYTFRIVExUSFRMVEhUTFRIWEhUTFRIVFBQSFRMVEhUTFRMVEhUTFRIVExUSFRMVExUSFRIWEhUSFhIVEjoQFhIWERUTFREWEBYRFRIVExUTFRMVEhUTFRIVExUSFRMVEhYTOBE5EzkSFRIVEhUTORE6FQANBQ=='
+        br_ac_electra:
+          friendly_name: "BedRoom AC Electra Power"
+          command_on: 'JgDYAAABKpcROhA6EhUTFhIVEhYSORE6EjkSORM5ERYSFRIVEhYROhIVFBUSFRMVEhUTORE5EjoSFRIVEhUTFREWEhUSFRIWERYSFRIVEhUSFRM5ERYSOhEVExURFhIVEhUTFREWEhUSFRMVERYSFRIVEhUSFRMVEhUSFRIVExURFhIWERYSFRIVExURFhIVEhUSFhEVExUSFRIWERUTFREWEjkSFRIWExUVExIVExUSFRMVEhUTFRM5ERUSORIVExUTFRIWEhUTORE5EjoROhIVEzoQOhI6FQANBQ==='
+          command_off: 'JgDYAAABKpcTOBE6FBMUFBQTExMSOBM5EzoROhM4FRMSFRQUEhUTOhMTEhUUExIVFRMROhI5EjoUExMWEhUSFhIVEhYSFRIWFBMTFRIVExUSFhI5ERUTORIVEhUUFRIVExUUExUTEhYSFRMVEhUTFREVExUSFREWERYRFRMVERYSFRIVEhYRFhIVEhUSFhEVExURFhIVEhUTFREWEhUSFRMVERYSFRIVExURFhIVEhUSFRIVExURFhIzGBUTOREWExURFRIVERYSORI5EzkROhIVFBUSOhA4FwANBQ=='
+        br_mi_box_power:
+          friendly_name: "BedRoom MiBox Power"
+          command_on: 'JgA0ACMRFhEWLRYtFhEWLRYRFi0WERUuFi0WAAFTIhEWERYtFi0WERYtFhEVLhYRFS4VLhYADQUAAAAA=='
+          command_off: 'JgA0ACMRFhEWLRYtFhEWLRYRFi0WERUuFi0WAAFTIhEWERYtFi0WERYtFhEVLhYRFS4VLhYADQUAAAAA==' 
+
+    - platform: broadlink
+      host: !secret broadlink_livingroom
+      mac: !secret broadlink_livingroom_mac
+      friendly_name: "Living Room Broadlink"
+      timeout: 15
+      type: rm_mini
+      switches:
+        lr_tv_minix_power:
+          friendly_name: "Living room TV Minix Power"
+          command_on: 'JgDwAA8ABzUAASqSFDYVERQRFREUERURFBEVERQRFTYUNhU2FDYVNhQ2FTUVERURFBEVNhQ2FREUERURFDYVNRU2FBEVERQ2FTYUNhUABR4AAStIFAAMaAABKkkUAAxnAAEoShUADGcAAShKFQAMZwABKkkUAAxnAAEqNwULFwAMZwABKkkVAAuVB8sAASpJFAAMZwABKkkVAAxmAAErSBUADGcAASpJFAAMZwABKEsUAAxoAAEqSRQADGcAAStIEwAMaQABKkkUAAxnAAEqSRUADGcAASpJFAAMZwABK0gVAAxnAAEqSRQADGcAASpHFwANBQAAAAAAAAAA===' 
+      
