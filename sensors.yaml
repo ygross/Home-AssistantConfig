@@ -16,8 +16,8 @@
         friendly_name: Tal Phone Battery
         unit_of_measurement: '%'
         value_template: >-
-            {%- if state_attr('device_tracker.life360_tal', 'battery') %}
-                {{ state_attr('device_tracker.life360_tal', 'battery')|round }}
+            {%- if state_attr('device_tracker.life360_tal_marom', 'battery') %}
+                {{ state_attr('device_tracker.life360_tal_marom', 'battery')|round }}
             {% else %}
                 {{ states('sensor.battery_tal') }}
             {%- endif %}
@@ -28,8 +28,8 @@
         friendly_name: Noa Phone Battery
         unit_of_measurement: '%'
         value_template: >-
-            {%- if state_attr('device_tracker.life360_yossi', 'battery') %}
-                {{ state_attr('device_tracker.life360_yossi', 'battery')|round }}
+            {%- if state_attr('device_tracker.life360_yossi_gross', 'battery') %}
+                {{ state_attr('device_tracker.life360_yossi_gross', 'battery')|round }}
             {% else %}
                 {{ states('sensor.battery_yossi') }}
             {%- endif %}
