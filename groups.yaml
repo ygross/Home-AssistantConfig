@@ -81,3 +81,27 @@ talroom:
     - switch.tr_ac_electra_tal
     - switch.tr_mi_box_power
     - switch.tr_tv_samsung_power
+all_lights:
+  name: all Lights Group
+  entities:
+    - switch.frontlight1
+    - switch.frontlight2
+    - switch.frontlight3
+    - switch.pergula_light1
+    - switch.pergula_light2
+    - switch.sockettemp_switch
+    - switch.keshet_switch
+    - switch.balcony_switch
+    - switch.warehouse_light
+    - switch.warehouse_ext_light
+    - switch.hall_switch
+    - switch.warehouse_light1
+    - switch.warehouse_light2
+    - switch.warehouse_light3
+all_tv:
+  name: all Tv's
+  entities:
+   - media_player.bed_room_tv
+   - media_player.living_room_tv
+   - media_player.bed_room_tv
+

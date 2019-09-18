@@ -1,3 +1,13 @@
+- id: closeLights
+  alias: close all lights
+  trigger:
+  - at: '22:04:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: group.all_lights
+    service: homeassistant.turn_off
 - id: automation id
   alias: automation alias (name)
   trigger:
@@ -31,18 +41,32 @@
       payload: 5C9DACoff
       topic: RFbridge/tele/RESULT
     service: mqtt.publish
-- id: Reset Pergula  motion
-  alias: Reset Pergula  motion
+- id: Reset Living Room   motion
+  alias: Reset Living Room   motion
   trigger:
   - entity_id: binary_sensor.livingroom_motion
-    for: 00:00:05
+    for: 00:01:00
     from: 'off'
     platform: state
     to: 'on'
   condition: []
   action:
   - data:
-      payload: 4DC523off
+      payload: 7A4FE0off
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- id: Reset Pergula    motion
+  alias: Reset Pergula  motion
+  trigger:
+  - entity_id: binary_sensor.pergula_motion
+    for: 00:01:00
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      payload: 5C9DACoff
       topic: RFbridge/tele/RESULT
     service: mqtt.publish
 - alias: turn off Tal AC
@@ -51,18 +75,14 @@
     entity_id: binary_sensor.tal_room_motion
     to: 'off'
     for:
-      minutes: 1
+      minutes: 15
   condition:
   - condition: state
-    entity_id: binary_sensor.ac_tal_room_on
+    entity_id: climate.tal_room_ac
     state: 'on'
   action:
-  - data:
-      payload: B16533off
-      topic: RFbridge/tele/RESULT
-    service: mqtt.publish
-  - entity_id: switch.ac_electra_tal
-    service: homeassistant.turn_off
+  - entity_id: climate.tal_room_ac
+    service: climate.turn_off
   id: b90e4550954f4f5c9d8d073854290964
 - id: boiler morning
   alias: BOILER Morning
@@ -157,24 +177,38 @@
       title: Gross Home Assistant
     service: notify.telegram
 - id: Reset Front Motion
-  alias: Reset Front Motion
+  alias: 'Reset Front Door '
   trigger:
-  - entity_id: binary_sensor.front_door_motion
-    for: 00:00:05
+  - entity_id: binary_sensor.front_door_open
+    for: 00:01:00
     from: 'off'
     platform: state
     to: 'on'
   condition: []
   action:
   - data:
-      payload: D31421off
+      payload: 9D1489off
+      topic: RFbridge/tele/RESULT
+    service: mqtt.publish
+- id: Reset bedroom Motion
+  alias: Reset bedroom Motion
+  trigger:
+  - entity_id: binary_sensor.bedroom_motion
+    for: 00:01:00
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      payload: AF90ACoff
       topic: RFbridge/tele/RESULT
     service: mqtt.publish
 - id: Reset Kitchen Motion
   alias: Reset Kitchen Motion
   trigger:
   - entity_id: binary_sensor.kitchen_motion
-    for: 00:00:05
+    for: 00:01:00
     from: 'off'
     platform: state
     to: 'on'
@@ -187,8 +221,8 @@
 - id: Reset living Room Motion
   alias: Reset Livingroom Motion
   trigger:
-  - entity_id: binary_sensor.salon_motion
-    for: 00:00:05
+  - entity_id: binary_sensor.livingroom_motion
+    for: 00:01:00
     from: 'off'
     platform: state
     to: 'on'
@@ -202,7 +236,7 @@
   alias: Reset Back Door Lock
   trigger:
   - entity_id: binary_sensor.backdoor_open
-    for: 00:00:05
+    for: 00:01:00
     from: 'off'
     platform: state
     to: 'on'
@@ -216,7 +250,7 @@
   alias: Reset Tal room motion
   trigger:
   - entity_id: binary_sensor.tal_room_motion
-    for: 00:00:05
+    for: 00:01:00
     from: 'off'
     platform: state
     to: 'on'
@@ -234,13 +268,13 @@
   condition: []
   action:
   - data:
-      entity_id: switch.tv_lg_power
-    service: switch.turn_off
+      entity_id: group.all_tv
+    service: media_player.turn_off
 - id: smoke_detector_alarm reset
   alias: Hall Smoke Detector Alarm
   trigger:
   - entity_id: binary_sensor.hall_smoke_detector
-    for: 00:00:05
+    for: 00:01:00
     from: 'Off'
     platform: state
     to: 'on'
@@ -277,5 +311,63 @@
   action:
   - data:
       message: smoke detector kitchen alarm
+      title: Gross Home Assistant
+    service: notify.telegram
+- id: No Movement Turn Of bedroom fan
+  alias: No Movement Turn Of bedroom fan
+  trigger:
+  - entity_id: binary_sensor.bedroom_motion
+    for: 00:15:00
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: switch.bedroomfan_switch
+    service: switch.turn_off
+  - data:
+      message: No Move bedroom  Fan Off
+      title: Gross Home Assistant
+    service: notify.telegram
+- id: No MoveTurn Off bedroom aircondition
+  alias: No Movement Turn Of bedroom A/C
+  trigger:
+  - entity_id: binary_sensor.bedroom_motion
+    for: 00:30:00
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: climate.bed_room_ac
+    state: 'on'
+  action:
+  - data:
+      entity_id: climate.bed_room_ac
+    entity_id: climate.bed_room_ac
+    service: climate.turn_off
+  - data:
+      message: No Move Bedroom Ac Off
+      title: Gross Home Assistant
+    service: notify.telegram
+- id: No MoveTurn Off Living Room aircondition
+  alias: No Movement Turn Of Livingdroom A/C
+  trigger:
+  - entity_id: binary_sensor.livingroom_motion
+    for: 00:30:00
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: climate.living_room_ac
+    state: 'on'
+  action:
+  - data:
+      entity_id: climate.living_room_ac
+    entity_id: climate.living_room_ac
+    service: climate.turn_off
+  - data:
+      message: No Move Living room Ac Off
       title: Gross Home Assistant
     service: notify.telegram
