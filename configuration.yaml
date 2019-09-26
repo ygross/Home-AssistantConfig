@@ -14,6 +14,7 @@ homeassistant:
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
 # Show links to resources in log and frontend
+
 #introduction:
 system_health:
 
@@ -21,7 +22,17 @@ system_health:
 frontend:
   themes: !include_dir_merge_named themes
 # Enables configuration UI
+ # extra_html_url:
+  #      - /local/custom_ui/state-card-custom-ui.html
+  #extra_html_url_es5:
+    #    - /local/custom_ui/state-card-custom-ui-es5.html
+customizer:
+  custom_ui: debug
+  
 config:
+
+#lovelace:
+ # mode: yaml
 
 #turn on history 
 history: !include history.yaml
@@ -48,7 +59,9 @@ binary_sensor: !include RFsensors.yaml
 # Text to speech
 tts:
   - platform: google_translate
-
+google:
+  client_id: !secret google_clientID
+  client_secret: !secret google_secret
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -60,7 +73,8 @@ mqtt:
   #discovery_prefix: homeassistant
  
 switch: !include switches.yaml
-
+hacs:
+  token: 83567319a049c245d4567f09deae674e9513589b
 zone 1:
   name: Work
   latitude: !secret work_latitude
@@ -89,7 +103,7 @@ zone 4:
 weather:
   - platform: darksky
     api_key: !secret darksky_api_key
-    
+    mode: daily
 telegram_bot:
   - platform: polling
     api_key: !secret  telegram_apikey
@@ -113,7 +127,7 @@ input_select: !include input_select.yaml
 input_boolean: !include input_boolean.yaml
 input_text: !include input_text.yaml
 cover: !include covers.yaml
-
+sun:
 life360:
   # MPH, assuming imperial units.
   # If using metric (KPH), the equivalent would be 29.

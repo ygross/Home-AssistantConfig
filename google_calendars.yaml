@@ -1,0 +1,54 @@
+- cal_id: "family13956555321655552817@group.calendar.google.com"
+  entities:
+  - device_id: family_calendar
+    name: Family Calendar
+    track: true
+
+- cal_id: 5letpot86vbtc7fklql9shbsgc@group.calendar.google.com
+  entities:
+  - device_id: bn_tsby
+    ignore_availability: true
+    name: "\u05D1\u05DF \u05E6\u05D1\u05D9"
+    track: true
+
+- cal_id: ygross@gmail.com
+  entities:
+  - device_id: ygross_gmail_com
+    ignore_availability: true
+    name: ygross@gmail.com
+    track: true
+
+- cal_id: addressbook#contacts@group.v.calendar.google.com
+  entities:
+  - device_id: contacts
+    ignore_availability: true
+    name: Contacts
+    track: true
+
+- cal_id: '#hebrew@group.v.calendar.google.com'
+  entities:
+  - device_id: hebrew_calendar
+    ignore_availability: true
+    name: Hebrew Calendar
+    track: true
+
+- cal_id: en.jewish#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_israel
+    ignore_availability: true
+    name: Holidays in Israel
+    track: true
+
+- cal_id: en.judaism#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: jewish_holidays
+    ignore_availability: true
+    name: Jewish Holidays
+    track: true
+
+- cal_id: p#weeknum@group.v.calendar.google.com
+  entities:
+  - device_id: week_numbers
+    ignore_availability: true
+    name: Week Numbers
+    track: true

@@ -1,6 +1,0 @@
-resources:
-- url: /local/custom-lovelace/bar-card/bar-card.js?v=1.0.0
-  type: js
-- type: custom:bar-card
-  title: Default
-  entity: sensor.example

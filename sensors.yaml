@@ -1,3 +1,41 @@
+  - platform: attributes
+    attribute: last_triggered
+    icon: 'mdi:clock'
+    time_format: '%e %B - %H:%M:%S'
+    entities:
+      - automation.boiler_evening
+      - automation.kitchen_reset_motionn
+      - automation.bed_room_power_on_ac_motion_sensor
+      - automation.front_lights_turn_on
+      - automation.bedroom_turn_on_lights_morning
+      - automation.living_room_ac_movmentchange
+      - automation.front_door_reset
+      - automation.bedroom_reset_motion
+      - automation.tal_room_power_on_ac_motion_sensor
+      - automation.kitchen_reset_motion
+      - automation.livingroom_reset_ac_motion_sensor
+      - automation.back_door_reset_lock
+      - automation.tal_room_reset_motion
+      - automation.turn_off_lights
+      - automation.turn_off_tv_s
+      - automation.hall_smoke_detector_alarm
+      - automation.living_room_reset_motion
+      - automation.keshet_turn_on_movement
+      - automation.kitchen_smoke_detector_alarm
+      - automation.pergula_reset_motion
+      - automation.tal_turn_off_ac
+      - automation.bedroom_no_movement_turn_of_fan
+      - automation.boiler_morning
+      - automation.bedroom_no_movement_turn_of_a_c
+      - automation.boiler_evening
+  - platform: school_holidays
+    elementary_school: True
+    high_school: True
+    resources:
+    - is_high_vacation
+    - is_elementary_vacation
+    - summary
+    
   - platform: template
     sensors:
       battery_noa: 

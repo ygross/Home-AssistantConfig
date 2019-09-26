@@ -1,0 +1,559 @@
+resources:
+  - type: js
+    url: /local/community/bar-card/bar-card.js
+  - type: module
+    url: /local/community/button-card/bar-card.js
+  - type: js
+    url: /local/community/gauge-card/gauge-card.js
+  - type: module
+    url: /local/community/mini-graph-card/mini-graph-card-bundle.js
+  - type: js
+    url: /local/community/secondaryinfo-entity-row/secondaryinfo-entity-row.js
+  - type: js
+    url: /local/card-tools.js
+  - type: module
+    url: /local/community/surveillance-card/surveillance-card.js?v=0
+  - type: js
+    url: /local/community/calendar-card/calendar-card.js
+  - type: module
+    url: /local/community/weather-card/weather-card.js
+  - type: module
+    url: /local/community/swipe-card/swipe-card.js
+  - type: js
+    url: /local/community/fitbit-card/fitbit-card.js
+title: Gross Family
+views:
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.battery_noa
+            name: Noa
+            secondary_info: last-changed
+          - entity: sensor.battery_tal
+            name: Tal
+            secondary_info: last-changed
+          - entity: sensor.battery_yossi
+            name: Yossi
+            secondary_info: last-changed
+          - entity: sensor.battery_ofir
+            name: ofir
+            secondary_info: last-changed
+          - entity: device_tracker.life360_noa
+            secondary_info: last-changed
+          - entity: device_tracker.life360_ofir
+            secondary_info: last-changed
+          - entity: device_tracker.life360_tal_marom
+            secondary_info: last-changed
+          - entity: device_tracker.life360_yossi_gross
+            secondary_info: last-changed
+        title: Family Presence
+        type: entities
+      - dateBottomFormat: ddd
+        dateTopFormat: DD
+        entities:
+          - entity: calendar.family_calendar
+            name: calendar.family_calendar
+        hideHeader: false
+        hideTime: false
+        highlightToday: true
+        ignoreEventsExpression: ''
+        numberOfDays: '30'
+        progressBar: true
+        showEventOrigin: false
+        showLocation: false
+        showLocationIcon: true
+        showMultiDay: false
+        startFromToday: true
+        timeFormat: 'HH:mma'
+        title: Family Calendar
+        type: 'custom:calendar-card'
+      - current: false
+        details: true
+        entity: weather.dark_sky
+        forecast: true
+        icons: /local/community/weather-card/icons/
+        name: weather
+        type: 'custom:weather-card'
+      - entity: sensor.processor_use
+        max: 100
+        min: 0
+        severity:
+          green: 0
+          red: 90
+          yellow: 50
+        theme: default
+        type: gauge
+      - entity: sensor.memory_use_percent
+        max: 100
+        min: 0
+        name: memory
+        severity:
+          green: 30
+          red: 90
+          yellow: 50
+        theme: default
+        type: gauge
+      - entities:
+          - entity: sensor.talroom_temperature
+            name: Tal Room
+          - entity: sensor.livingroom_temperature
+            name: Living Room
+          - entity: sensor.bedroom_temperature
+            name: Bed Room
+          - entity: sensor.talroom_humidity
+            name: Tal Room
+          - entity: sensor.livingroom_humidity
+            name: Living Room
+          - entity: sensor.bedroom_humidity
+            name: Bed room
+          - entity: sensor.ext_humidity
+            name: Outside
+          - entity: sensor.ext_temperature
+            name: Outside
+        hours_to_show: 12
+        title: Home Climate
+        type: history-graph
+      - entity: sensor.boiler_watertemp
+        max: 100
+        min: 0
+        severity:
+          green: 0
+          red: 70
+          yellow: 40
+        theme: default
+        type: gauge
+      - entities:
+          - device_tracker.life360_noa
+          - device_tracker.life360_yossi_gross
+          - device_tracker.life360_tal_marom
+          - device_tracker.life360_ofir
+          - zone.home
+          - zone.school
+          - zone.sdeteman
+          - zone.work
+        title: מפה
+        type: map
+      - entities:
+          - entity: sensor.school_summary
+        type: entities
+    path: default_view
+    title: Home
+  - badges: []
+    cards:
+      - entities:
+          - entity: binary_sensor.ac_living_room_on
+            icon: 'mdi:air-conditioner'
+            name: Living Room A/C
+            secondary_info: last-changed
+          - entity: binary_sensor.livingroom_motion
+            name: Living room Motion
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: sensors
+        type: entities
+      - entity: climate.living_room_ac
+        name: A/C
+        type: thermostat
+      - entity: media_player.living_room_tv
+        type: media-control
+      - entities:
+          - entity: switch.lr_tv_minix_power
+        show_header_toggle: false
+        title: switches
+        type: entities
+      - camera_image: camera.livingroom
+        entity: camera.livingroom
+        show_info: true
+        title: berdoom
+        type: picture-entity
+      - entities:
+          - entity: automation.back_door_reset_lock
+            secondary_info: '[[ sensor.back_door_reset_lock_last_triggered ]]'
+            type: 'custom:secondaryinfo-entity-row'
+          - entity: automation.bed_room_power_on_ac_motion_sensor
+            secondary_info: '[[ sensor.bed_room_power_on_ac_motion_sensor_last_triggered ]]'
+            type: 'custom:secondaryinfo-entity-row'
+        type: entities
+    title: living room
+  - badges: []
+    cards:
+      - entities:
+          - entity: switch.bedroomfan_switch
+            icon: 'mdi:fan'
+            name: Bed Room Fan
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: switches
+        type: entities
+      - entities:
+          - entity: sensor.bedroom_humidity
+            name: Humidity
+            secondary_info: last-changed
+        title: Temperature
+        type: glance
+      - entities:
+          - entity: binary_sensor.bedroom_motion
+            name: Bed Room motion
+            secondary_info: last-changed
+          - entity: binary_sensor.ac_bedroom_on
+            icon: 'mdi:air-conditioner'
+            name: Bed Room A/C
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: sensors
+        type: entities
+      - camera_image: camera.bedroom
+        entity: camera.bedroom
+        show_info: true
+        title: berdoom
+        type: picture-entity
+      - entity: climate.bed_room_ac
+        name: A/C
+        type: thermostat
+      - entity: media_player.bed_room_tv
+        type: media-control
+    title: bedroom
+  - badges: []
+    cards:
+      - entities:
+          - entity: binary_sensor.front_door_open
+            name: Front Door
+            secondary_info: last-changed
+          - entity: binary_sensor.kitchen_motion
+            name: Kitchen Motion
+            secondary_info: last-changed
+          - entity: binary_sensor.kitchen_smoke_detector_alarm
+            icon: 'mdi:smoke-detector'
+            name: Kitchen Smoke Detector
+            secondary_info: last-changed
+        show_header_toggle: false
+        type: entities
+      - entities:
+          - entity: switch.keshet_switch
+            icon: 'mdi:lightbulb'
+            name: Keshet
+            secondary_info: last-changed
+          - entity: switch.washmachines_switch
+            name: Wash Machines
+            secondary_info: last-changed
+          - entity: switch.fridgeovenmic_switch
+            name: Fridge/Oven
+            secondary_info: last-changed
+          - entity: switch.balcony_switch
+            icon: 'mdi:lightbulb'
+            name: Balcony
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: switches
+        type: entities
+      - camera_image: camera.kitchen
+        entity: camera.kitchen
+        show_info: true
+        title: berdoom
+        type: picture-entity
+      - entities:
+          - entity: sensor.fridgeovenmic_pow_current
+            icon: 'mdi:toaster-oven'
+            name: Fridge/Oven
+            secondary_info: last-changed
+          - entity: sensor.fridgeovenmic_pow_power
+            icon: 'mdi:toaster-oven'
+            name: Fridge/Oven
+            secondary_info: last-changed
+          - entity: sensor.washmachines_pow_current
+            icon: 'mdi:washing-machine'
+            name: Wash Machines
+            secondary_info: last-changed
+          - entity: sensor.washmachines_pow_power
+            icon: 'mdi:washing-machine'
+            name: Wash Machines
+            secondary_info: last-changed
+        type: entities
+      - entities:
+          - entity: sensor.fridgeovenmic_pow_today
+            name: Fridge/Oven/Microwave
+          - entity: sensor.washmachines_pow_today
+            name: Wash Machines
+        type: history-graph
+      - entities:
+          - entity: sensor.boiler_pow_current
+            name: boiler
+          - entity: sensor.fridgeovenmic_pow_current
+            name: fridge
+          - entity: sensor.washmachines_pow_current
+            name: wash machines
+        type: history-graph
+    title: kitchen
+  - badges: []
+    cards:
+      - entities:
+          - entity: binary_sensor.front_door_open
+            name: Front Door
+            secondary_info: last-changed
+          - entity: binary_sensor.hall_smoke_detector
+            icon: 'mdi:smoke-detector'
+            name: Hall Smoke Detector
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: sensors
+        type: entities
+      - entities:
+          - entity: switch.boiler_switch
+            name: Boiler
+            secondary_info: last-changed
+          - entity: switch.keshet_switch
+            icon: 'mdi:lightbulb'
+            name: Keshet
+            secondary_info: last-changed
+          - entity: switch.hall_switch
+            icon: 'mdi:lightbulb'
+            name: Hall
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: switches
+        type: entities
+      - entities:
+          - entity: sensor.boiler_pow_current
+          - entity: sensor.boiler_pow_power
+        title: boiler
+        type: history-graph
+      - camera_image: camera.entrance
+        entity: camera.entrance
+        show_info: false
+        title: Entrance
+        type: picture-entity
+      - entity: sensor.livingroom_temperature
+        max: 100
+        min: 0
+        severity:
+          green: 30
+          red: 50
+          yellow: 40
+        theme: default
+        type: gauge
+    path: hall
+    title: Hall
+  - badges: []
+    cards:
+      - entities:
+          - entity: switch.pergula_fan
+            icon: 'mdi:fan'
+            name: Pergula Fan
+            secondary_info: last-changed
+          - entity: switch.pergula_light1
+            icon: 'mdi:lightbulb'
+            name: Pergula Light1
+            secondary_info: last-changed
+          - entity: switch.pergula_light2
+            icon: 'mdi:lightbulb'
+            name: Pergula Light2
+            secondary_info: last-changed
+          - entity: switch.warehouse_ext_light
+            icon: 'mdi:lightbulb'
+            name: warehouse ext light
+            secondary_info: last-changed
+          - entity: switch.warehouse_light1
+            icon: 'mdi:oil-temperature'
+            name: warhouse Boiler Temp
+            secondary_info: last-changed
+          - entity: switch.warehouse_light2
+            icon: 'mdi:lightbulb'
+            name: Warehouse
+            secondary_info: last-changed
+          - entity: switch.warehouse_light3
+            icon: 'mdi:lightbulb'
+            name: warehouse
+            secondary_info: last-changed
+          - entity: switch.exttemp_switch
+            icon: 'mdi:pool'
+            name: Pool Filter
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: switches
+        type: entities
+      - camera_image: camera.pergula
+        entity: camera.pergula
+        show_info: true
+        title: pergula
+        type: picture-entity
+      - camera_image: camera.pool
+        entity: camera.pool
+        show_info: true
+        title: pool
+        type: picture-entity
+      - entities:
+          - entity: binary_sensor.pergula_motion
+            name: Pergula
+            secondary_info: last-changed
+          - entity: sensor.ext_humidity
+            name: Outside
+            secondary_info: last-changed
+          - entity: sensor.ext_temperature
+            name: Outside
+            secondary_info: last-changed
+        type: entities
+    title: Pergula
+  - badges: []
+    cards:
+      - entities:
+          - entity: binary_sensor.tal_room_motion
+            name: Tal Rooom Motion
+            secondary_info: last-changed
+          - entity: binary_sensor.ac_tal_room_on
+            icon: 'mdi:air-conditioner'
+            name: Tal Room A/C
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: sensors
+        type: entities
+      - detail: 2
+        entity: sensor.talroom_temperature
+        graph: line
+        hours_to_show: 6
+        name: temperature
+        type: sensor
+      - detail: 2
+        entity: sensor.talroom_humidity
+        graph: line
+        hours_to_show: 6
+        name: humidity
+        type: sensor
+      - camera_image: camera.talroom
+        entity: camera.talroom
+        show_info: true
+        title: talroom
+        type: picture-entity
+      - entity: climate.tal_room_ac
+        name: A/C
+        type: thermostat
+      - entity: media_player.tal_room_tv
+        type: media-control
+    path: tal-room
+    title: Tal Room
+  - badges: []
+    cards:
+      - entities:
+          - entity: switch.frontlight2
+            icon: 'mdi:lightbulb'
+            name: color Lights
+            secondary_info: last-changed
+          - entity: switch.frontlight3
+            icon: 'mdi:lightbulb'
+            name: front Lights
+            secondary_info: last-changed
+          - entity: switch.frontwaterflow
+            icon: 'mdi:water-pump'
+            name: water Flow
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: front lights
+        type: entities
+      - camera_image: camera.cars
+        entity: camera.cars
+        show_info: true
+        title: berdoom
+        type: picture-entity
+      - entities:
+          - entity: binary_sensor.front_door_open
+            name: Front Door
+            secondary_info: last-changed
+        show_header_toggle: false
+        title: sensors
+        type: entities
+    title: front Yard
+  - badges: []
+    cards:
+      - entity: sensor.processor_use
+        name: CPU
+        severity:
+          green: 0
+          red: 90
+          yellow: 60
+        type: gauge
+        unit: '%'
+      - entities:
+          - entity: sensor.processor_use
+          - entity: sensor.memory_use_percent
+          - entity: sensor.memory_free
+        title: sensors
+        type: glance
+      - entities:
+          - entity: automation.boiler_morning
+            icon: 'mdi:autorenew'
+            name: Boiler Morning
+            secondary_info: '[[automation.boiler_morning.last_triggered]]'
+          - entity: automation.boiler_evening
+            icon: 'mdi:autorenew'
+            name: Boiler Evening
+            secondary_info: 'attribute:last_triggered'
+          - entity: automation.bedroom_lights_morning
+            icon: 'mdi:autorenew'
+            name: Bedroom Lights Morning
+            secondary_info: 'attribute:last_triggered'
+          - entity: automation.front_lights
+            icon: 'mdi:autorenew'
+            name: Front  Lights Evening
+            secondary_info: 'attribute:last_triggered'
+        show_header_toggle: false
+        type: entities
+      - entities:
+          - entity: binary_sensor.back_door_open
+            name: Back Door
+            secondary_info: last-changed
+          - entity: binary_sensor.front_door_open
+            name: Front door
+            secondary_info: last-changed
+          - entity: binary_sensor.ac_bedroom_on
+            name: Bedroom A/C
+            secondary_info: last-changed
+          - entity: binary_sensor.ac_living_room_on
+            name: LivingRoom A/C
+            secondary_info: last-changed
+          - entity: binary_sensor.ac_tal_room_on
+            name: Tal Room A/C
+            secondary_info: last-changed
+          - entity: binary_sensor.bedroom_motion
+            name: Bedroom motion
+            secondary_info: last-changed
+          - entity: binary_sensor.kitchen_motion
+            name: Kitchen Motion motion
+            secondary_info: last-changed
+          - entity: binary_sensor.hall_smoke_detector
+            name: Hall Smoke Detector
+            secondary_info: last-changed
+          - entity: binary_sensor.kitchen_smoke_detector_alarm
+            name: Kitchen Smoke Detector
+            secondary_info: last-changed
+          - entity: binary_sensor.livingroom_motion
+            name: Living room motion
+            secondary_info: last-changed
+          - entity: binary_sensor.pergula_motion
+            name: Pergula motion
+            secondary_info: last-changed
+          - entity: binary_sensor.tal_room_motion
+            name: Tal Room motion
+            secondary_info: last-changed
+          - entity: binary_sensor.warehouse_door_motion
+            name: wareHouse motion
+            secondary_info: last-changed
+        type: entities
+    path: management
+    title: management
+  - badges: []
+    cards:
+      - cameras:
+          - entity: camera.bedroom
+            motion_entity: binary_sensor.bedroom_motion
+          - entity: camera.entrance
+            motion_entity: binary_sensor.kitchen_motion
+          - entity: camera.cars
+          - entity: camera.kitchen
+          - entity: camera.livingroom
+            motion_entity: binary_sensor.livingroom_motion
+          - entity: camera.pergula
+            motion_entity: binary_sensor.pergula_motion
+        thumb_interval: 15
+        type: 'custom:surveillance-card'
+        update_interval: 2
+    path: cameras
+    title: cameras

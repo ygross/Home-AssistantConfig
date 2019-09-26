@@ -93,8 +93,8 @@
       state_topic: "RFbridge/tele/RESULT"
       name: 'AC Bedroom ON'
       value_template: '{{value_json.RfReceived.Data}}'
-      payload_on: 'EB66FE2222'
-      payload_off: 'EB66FEoff222222'
+      payload_on: 'EB66FE'
+      payload_off: 'EB66FEoff'
       device_class: power
       qos: 1 
       
